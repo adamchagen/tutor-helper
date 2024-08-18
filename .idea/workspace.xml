@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8cf15db-5a74-49b3-a0e5-1b2bc9d3acfa" name="Changes" comment="Initial">
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    <list default="true" id="c8cf15db-5a74-49b3-a0e5-1b2bc9d3acfa" name="Changes" comment="Implemented parsing and template sending via telegram of manually downloaded jobs page&#10;Upcoming: after implementing scheduling portion of tutor-helper, modify template to indicate to student if I can meet at their suggested start time">
+      <change afterPath="$PROJECT_DIR$/job_template_sender/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job_template_sender/job_template_sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/job_template_sender/job_template_sender.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +55,12 @@
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\adamc\PycharmProjects\tutor-helper\job_template_sender" />
+      <recent name="C:\Users\adamc\PycharmProjects\tutor-helper\job_template_sender\jobs_files" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -77,7 +85,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723930639557</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Implemented parsing and template sending via telegram of manually downloaded jobs page&#10;Upcoming: after implementing scheduling portion of tutor-helper, modify template to indicate to student if I can meet at their suggested start time">
+      <option name="closed" value="true" />
+      <created>1723954087417</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1723954087417</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -85,6 +101,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial" />
+    <MESSAGE value="Implemented parsing and template sending via telegram of manually downloaded jobs page&#10;Upcoming: after implementing scheduling portion of tutor-helper, modify template to indicate to student if I can meet at their suggested start time" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented parsing and template sending via telegram of manually downloaded jobs page&#10;Upcoming: after implementing scheduling portion of tutor-helper, modify template to indicate to student if I can meet at their suggested start time" />
   </component>
 </project>
