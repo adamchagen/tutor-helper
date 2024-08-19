@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8cf15db-5a74-49b3-a0e5-1b2bc9d3acfa" name="Changes" comment="Implemented parsing and template sending via telegram of manually downloaded jobs page&#10;Upcoming: after implementing scheduling portion of tutor-helper, modify template to indicate to student if I can meet at their suggested start time">
-      <change afterPath="$PROJECT_DIR$/job_template_sender/__init__.py" afterDir="false" />
+    <list default="true" id="c8cf15db-5a74-49b3-a0e5-1b2bc9d3acfa" name="Changes" comment="Redid file organization: isolated job_template_sender into its own package in preparation for adding distinct tools">
+      <change afterPath="$PROJECT_DIR$/google_workspace/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/google_workspace/auth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/job_template_sender/job_template_sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/job_template_sender/job_template_sender.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +92,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723954087417</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Redid file organization: isolated job_template_sender into its own package in preparation for adding distinct tools">
+      <option name="closed" value="true" />
+      <created>1723956665325</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723956665325</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -102,6 +109,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial" />
     <MESSAGE value="Implemented parsing and template sending via telegram of manually downloaded jobs page&#10;Upcoming: after implementing scheduling portion of tutor-helper, modify template to indicate to student if I can meet at their suggested start time" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented parsing and template sending via telegram of manually downloaded jobs page&#10;Upcoming: after implementing scheduling portion of tutor-helper, modify template to indicate to student if I can meet at their suggested start time" />
+    <MESSAGE value="Redid file organization: isolated job_template_sender into its own package in preparation for adding distinct tools" />
+    <option name="LAST_COMMIT_MESSAGE" value="Redid file organization: isolated job_template_sender into its own package in preparation for adding distinct tools" />
   </component>
 </project>
