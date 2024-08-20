@@ -8,16 +8,16 @@ from dotenv import load_dotenv
 load_dotenv()
 
 CREDENTIALS_FILE = os.getenv('CREDENTIALS_FILE')
-SCOPES = os.getenv('SCOPES')
+SCOPES = os.getenv('SCOPES').split(',')
 def get_calendar_service():
     creds = None
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
-    # time.n.
+    # time.
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
-    # If there are no (valid) credentials available, let the user log i
+    # If there are no (valid) credentials available, let the user log in
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())

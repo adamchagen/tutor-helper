@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8cf15db-5a74-49b3-a0e5-1b2bc9d3acfa" name="Changes" comment="Redid file organization: isolated job_template_sender into its own package in preparation for adding distinct tools">
-      <change afterPath="$PROJECT_DIR$/google_workspace/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/google_workspace/auth.py" afterDir="false" />
+    <list default="true" id="c8cf15db-5a74-49b3-a0e5-1b2bc9d3acfa" name="Changes" comment="Implemented auth.py for Google calendar access for later use in tools">
+      <change afterPath="$PROJECT_DIR$/incoming_pay_estimator/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/incoming_pay_estimator/incoming_pay_estimator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_workspace/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/google_workspace/auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,21 +25,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "adamchagen"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;adamchagen&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/adamchagen/tutor-helper.git",
-    "accountId": "0f6acf5e-0313-4b02-998c-89e4db19fff3"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/adamchagen/tutor-helper.git&quot;,
+    &quot;accountId&quot;: &quot;0f6acf5e-0313-4b02-998c-89e4db19fff3&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2knp05ycJ7Id2TlrPatK4qBwuaR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -47,10 +48,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python.incoming_pay_estimator.executor": "Run",
+    "Python.job_template_sender.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/adamc/PycharmProjects/Old tutor-helper",
+    "last_opened_file_path": "C:/Users/adamc/PycharmProjects/tutor-helper",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
@@ -100,7 +103,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723956665325</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implemented auth.py for Google calendar access for later use in tools">
+      <option name="closed" value="true" />
+      <created>1723960537931</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1723960537931</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -110,6 +121,7 @@
     <MESSAGE value="Initial" />
     <MESSAGE value="Implemented parsing and template sending via telegram of manually downloaded jobs page&#10;Upcoming: after implementing scheduling portion of tutor-helper, modify template to indicate to student if I can meet at their suggested start time" />
     <MESSAGE value="Redid file organization: isolated job_template_sender into its own package in preparation for adding distinct tools" />
-    <option name="LAST_COMMIT_MESSAGE" value="Redid file organization: isolated job_template_sender into its own package in preparation for adding distinct tools" />
+    <MESSAGE value="Implemented auth.py for Google calendar access for later use in tools" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented auth.py for Google calendar access for later use in tools" />
   </component>
 </project>
