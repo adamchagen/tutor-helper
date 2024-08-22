@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8cf15db-5a74-49b3-a0e5-1b2bc9d3acfa" name="Changes" comment="Implemented auth.py for Google calendar access for later use in tools">
-      <change afterPath="$PROJECT_DIR$/incoming_pay_estimator/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/incoming_pay_estimator/incoming_pay_estimator.py" afterDir="false" />
+    <list default="true" id="c8cf15db-5a74-49b3-a0e5-1b2bc9d3acfa" name="Changes" comment="Used get_calendar_service to implement most of pay calculator&#10;&#10;Upcoming: use beautifulsoup to parse manually downloaded students page and track student payrates in csv for use in pay calculator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/google_workspace/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/google_workspace/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/incoming_pay_estimator/incoming_pay_estimator.py" beforeDir="false" afterPath="$PROJECT_DIR$/incoming_pay_estimator/incoming_pay_estimator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,14 +49,17 @@
     "Python.incoming_pay_estimator.executor": "Run",
     "Python.job_template_sender.executor": "Run",
     "Python.main.executor": "Run",
+    "Python.tbd.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/adamc/PycharmProjects/tutor-helper",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\adamc\PycharmProjects\tutor-helper\incoming_pay_estimator" />
       <recent name="C:\Users\adamc\PycharmProjects\tutor-helper\job_template_sender" />
       <recent name="C:\Users\adamc\PycharmProjects\tutor-helper\job_template_sender\jobs_files" />
     </key>
@@ -111,7 +112,23 @@
       <option name="project" value="LOCAL" />
       <updated>1723960537931</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Used get_calendar_service to implement most of pay calculator">
+      <option name="closed" value="true" />
+      <created>1723999880071</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1723999880071</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Used get_calendar_service to implement most of pay calculator&#10;&#10;Upcoming: use beautifulsoup to parse manually downloaded students page and track student payrates in csv for use in pay calculator">
+      <option name="closed" value="true" />
+      <created>1724000144350</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1724000144350</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -122,6 +139,8 @@
     <MESSAGE value="Implemented parsing and template sending via telegram of manually downloaded jobs page&#10;Upcoming: after implementing scheduling portion of tutor-helper, modify template to indicate to student if I can meet at their suggested start time" />
     <MESSAGE value="Redid file organization: isolated job_template_sender into its own package in preparation for adding distinct tools" />
     <MESSAGE value="Implemented auth.py for Google calendar access for later use in tools" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented auth.py for Google calendar access for later use in tools" />
+    <MESSAGE value="Used get_calendar_service to implement most of pay calculator" />
+    <MESSAGE value="Used get_calendar_service to implement most of pay calculator&#10;&#10;Upcoming: use beautifulsoup to parse manually downloaded students page and track student payrates in csv for use in pay calculator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Used get_calendar_service to implement most of pay calculator&#10;&#10;Upcoming: use beautifulsoup to parse manually downloaded students page and track student payrates in csv for use in pay calculator" />
   </component>
 </project>

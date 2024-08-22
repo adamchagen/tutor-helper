@@ -3,6 +3,8 @@ from google_workspace import auth
 from dotenv import load_dotenv
 import os
 from dateutil import parser
+from bs4 import BeautifulSoup
+import psycopg2
 
 """
 To be used later: code for getting all calendar ids
@@ -53,8 +55,51 @@ def incoming_pay_estimator(service):
             pay += duration * get_rate(event['summary'])
             """
 
-def write_student_rates_to_csv(service):
-    pass
+def write_student_rates_to_csv():
+    load_dotenv()
+
+    conn = psycopg2.connect(
+        dbname=os.getenv('DB_NAME'),
+        user=os.getenv('DB_USER'),
+        password=os.getenv('DB_PASSWORD'),
+        host=os.getenv('DB_HOST')
+    )
+
+    cur = conn.cursor()
+
+    with open('student_rates.html', 'r') as jobs_html:
+        jobs_content = jobs_html.read()
+
+    soup = BeautifulSoup(jobs_content, 'lxml')
+
+    tr_list = soup.find_all('tr')
+
+    # Trim the column headers
+    tr_list = tr_list[1:]
+
+    for tr in tr_list:
+        td_list = tr.find_all('td')
+        name_td = td_list[0]
+        name = name_td.find('a').text
+        print(name)
+
+        # Find the text after the <br> tag
+        # First, find the <br> tag
+        br_tag = name_td.find('br')
+
+        # Get the text immediately following the <br> tag
+        location = br_tag.find_next_sibling(string=True).strip()
+        print(location)
+
+        payrate_td = td_list[3]
+        payrate = payrate_td.text.strip()[:7]
+        print(payrate)
+
+        # Insert the data into the students table
+        cur.execute("""
+                INSERT INTO students (name, location, payrate)
+                VALUES (%s, %s, %s);
+                """, (name, location, payrate))
 
 
 if __name__ =='__main__':
