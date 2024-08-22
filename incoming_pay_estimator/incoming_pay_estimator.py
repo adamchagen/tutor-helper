@@ -15,8 +15,54 @@ calendars = service.calendarList().list().execute()
         print(f"Calendar Name: {calendar['summary']}, Calendar ID: {calendar['id']}")
 """
 
+load_dotenv()
+
 def incoming_pay_estimator(service):
-    load_dotenv()
+    def write_student_rates_to_csv():
+        with open('student_rates.html', 'r') as jobs_html:
+            jobs_content = jobs_html.read()
+
+        soup = BeautifulSoup(jobs_content, 'lxml')
+
+        tr_list = soup.find_all('tr')
+
+        # Trim the column headers
+        tr_list = tr_list[1:]
+
+        for tr in tr_list:
+            td_list = tr.find_all('td')
+            name_td = td_list[0]
+            name = name_td.find('a').text
+            print(name)
+
+            # Find the text after the <br> tag
+            # First, find the <br> tag
+            br_tag = name_td.find('br')
+
+            # Get the text immediately following the <br> tag
+            location = br_tag.find_next_sibling(string=True).strip()
+            print(location)
+
+            cur.execute("""
+                                SELECT *
+                                FROM students
+                                WHERE name = %s
+                                LIMIT 1;
+                            """, (name, subject))
+
+            result = cur.fetchone()
+
+            if not result:
+                # get payrate for student from Wyzant to insert it
+                payrate_td = td_list[3]
+                payrate = payrate_td.text.strip()[:7]
+                print(payrate)
+
+                # Insert the data into the students table
+                cur.execute("""
+                        INSERT INTO students (name, location, payrate)
+                        VALUES (%s, %s, %s);
+                        """, (name, location, payrate))
     CALENDAR_ID = os.getenv('CALENDAR_ID')
 
     beginning = datetime.now()
@@ -45,7 +91,34 @@ def incoming_pay_estimator(service):
             new_end = parser.isoparse(end)  # changing the end time to datetime format
             duration = float(((new_end - new_start)).seconds) / 3600
 
+            event_title = event['summary']
+            name = event_title.split(':')[0]
+
             print(duration)
+
+            conn = psycopg2.connect(
+                dbname=os.getenv('DB_NAME'),
+                user=os.getenv('DB_USER'),
+                password=os.getenv('DB_PASSWORD'),
+                host=os.getenv('DB_HOST')
+            )
+
+            cur = conn.cursor()
+
+            cur.execute("""
+                                SELECT payrate
+                                FROM students
+                                WHERE name = %s
+                                ORDER BY id DESC
+                                LIMIT 1;
+                            """, name)
+
+            result = cur.findone()
+
+            if not result:
+                write_student_rates_to_csv()
+
+
             """
             total_time += duration
             print(event['summary'] + " " + str(duration) + " hours")
@@ -54,53 +127,6 @@ def incoming_pay_estimator(service):
                 duration -= int(input()) / 30
             pay += duration * get_rate(event['summary'])
             """
-
-def write_student_rates_to_csv():
-    load_dotenv()
-
-    conn = psycopg2.connect(
-        dbname=os.getenv('DB_NAME'),
-        user=os.getenv('DB_USER'),
-        password=os.getenv('DB_PASSWORD'),
-        host=os.getenv('DB_HOST')
-    )
-
-    cur = conn.cursor()
-
-    with open('student_rates.html', 'r') as jobs_html:
-        jobs_content = jobs_html.read()
-
-    soup = BeautifulSoup(jobs_content, 'lxml')
-
-    tr_list = soup.find_all('tr')
-
-    # Trim the column headers
-    tr_list = tr_list[1:]
-
-    for tr in tr_list:
-        td_list = tr.find_all('td')
-        name_td = td_list[0]
-        name = name_td.find('a').text
-        print(name)
-
-        # Find the text after the <br> tag
-        # First, find the <br> tag
-        br_tag = name_td.find('br')
-
-        # Get the text immediately following the <br> tag
-        location = br_tag.find_next_sibling(string=True).strip()
-        print(location)
-
-        payrate_td = td_list[3]
-        payrate = payrate_td.text.strip()[:7]
-        print(payrate)
-
-        # Insert the data into the students table
-        cur.execute("""
-                INSERT INTO students (name, location, payrate)
-                VALUES (%s, %s, %s);
-                """, (name, location, payrate))
-
 
 if __name__ =='__main__':
     service = auth.get_calendar_service()
