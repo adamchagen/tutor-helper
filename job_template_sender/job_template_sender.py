@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import os
 import re
 from datetime import datetime
+from wyzant.wyzant_login import wyzant_login
 
 load_dotenv()
 
@@ -39,7 +40,9 @@ def get_template(subject: str, name: str, start: str, son_daughter_myself: str):
 with open('jobs.html', 'r') as jobs_html:
     jobs_content = jobs_html.read()
 
-soup = BeautifulSoup(jobs_content, 'lxml')
+#soup = BeautifulSoup(jobs_content, 'lxml')
+
+soup = wyzant_login()
 
 s = requests.session()
 

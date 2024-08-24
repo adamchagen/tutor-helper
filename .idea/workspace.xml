@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8cf15db-5a74-49b3-a0e5-1b2bc9d3acfa" name="Changes" comment="Added logic for when to write student rates to csv and part of logic to confirm absence of student before adding entry">
-      <change afterPath="$PROJECT_DIR$/wyzant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wyzant/wyzant_login.py" afterDir="false" />
+    <list default="true" id="c8cf15db-5a74-49b3-a0e5-1b2bc9d3acfa" name="Changes" comment="Added Wyzant login via requests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job_template_sender/job_template_sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/job_template_sender/job_template_sender.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wyzant/wyzant_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/wyzant/wyzant_login.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,20 +45,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.incoming_pay_estimator.executor": "Run",
-    "Python.job_template_sender.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.tbd.executor": "Run",
-    "Python.wyzant_login.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/adamc/PycharmProjects/Old tutor-helper",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.incoming_pay_estimator.executor&quot;: &quot;Run&quot;,
+    &quot;Python.job_template_sender.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tbd.executor&quot;: &quot;Run&quot;,
+    &quot;Python.wyzant_login.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/adamc/PycharmProjects/Old tutor-helper&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\adamc\PycharmProjects\tutor-helper\incoming_pay_estimator" />
@@ -138,7 +138,23 @@
       <option name="project" value="LOCAL" />
       <updated>1724129428206</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Added logic for when to write student rates to csv and part of logic to confirm absence of student before adding entry">
+      <option name="closed" value="true" />
+      <created>1724209717231</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1724209717231</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added Wyzant login via requests">
+      <option name="closed" value="true" />
+      <created>1724209771585</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1724209771585</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -152,6 +168,7 @@
     <MESSAGE value="Used get_calendar_service to implement most of pay calculator" />
     <MESSAGE value="Used get_calendar_service to implement most of pay calculator&#10;&#10;Upcoming: use beautifulsoup to parse manually downloaded students page and track student payrates in csv for use in pay calculator" />
     <MESSAGE value="Added logic for when to write student rates to csv and part of logic to confirm absence of student before adding entry" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added logic for when to write student rates to csv and part of logic to confirm absence of student before adding entry" />
+    <MESSAGE value="Added Wyzant login via requests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Wyzant login via requests" />
   </component>
 </project>

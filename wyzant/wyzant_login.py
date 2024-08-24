@@ -35,15 +35,15 @@ def wyzant_login():
 
     # Prepare the login payload
     payload = {
-        'username': USERNAME,  # Replace with your username
-        'password': PASSWORD,  # Replace with your password
+        'username': USERNAME,
+        'password': PASSWORD
     }
 
     # Define headers including the __RequestVerificationToken
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
         'Content-Type': 'application/x-www-form-urlencoded',
-        '__RequestVerificationToken': request_verification_token,  # Include the token in headers
+        '__RequestVerificationToken': request_verification_token
     }
 
     # Send the login request with headers
@@ -57,6 +57,8 @@ def wyzant_login():
     page_title = response_soup.title.string if response_soup.title else 'No title found'
 
     print(page_title.text)
+
+    return response_soup
 
 
 if __name__ == '__main__':
