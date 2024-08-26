@@ -26,7 +26,7 @@ def wyzant_login():
     request_verification_token = csrf_token_tag['value'] if csrf_token_tag else None
 
     if not request_verification_token:
-        print(response.content)
+        print("CSRF token couldn't be found")
     else:
         print("CSRF token found:", request_verification_token)
 
@@ -54,11 +54,15 @@ def wyzant_login():
 
     # Check if login was successful
     response_soup = BeautifulSoup(jobs_page.text, 'html.parser')
-    page_title = response_soup.title.string if response_soup.title else 'No title found'
+    page_title = response_soup.title.string
 
-    print(page_title.text)
+    if page_title == 'Jobs | Wyzant Tutoring':
+        print("Login successful")
 
-    return response_soup
+    else:
+        raise RuntimeError("Login unsuccessful")
+
+    return session
 
 
 if __name__ == '__main__':

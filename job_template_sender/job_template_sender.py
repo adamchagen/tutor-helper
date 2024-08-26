@@ -1,6 +1,4 @@
-import dotenv
 from bs4 import BeautifulSoup
-import requests
 from dotenv import load_dotenv
 import os
 import re
@@ -37,14 +35,12 @@ def get_template(subject: str, name: str, start: str, son_daughter_myself: str):
 
     return part1 + part2
 
-with open('jobs.html', 'r') as jobs_html:
-    jobs_content = jobs_html.read()
+session = wyzant_login()
 
-#soup = BeautifulSoup(jobs_content, 'lxml')
+jobs_page = session.get('https://wyzant.com/tutor/jobs')
 
-soup = wyzant_login()
+soup = BeautifulSoup(jobs_page.text, 'html.parser')
 
-s = requests.session()
 
 for job in soup.find_all('div', class_='row spc-small-ew spc-med-ew'):
     recency = job.find('span', class_='text-semibold text-light').text.strip()
@@ -75,4 +71,4 @@ for job in soup.find_all('div', class_='row spc-small-ew spc-med-ew'):
     TELEGRAM_API_KEY = os.getenv('TELEGRAM_API_KEY')
     TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 
-    s.get(f'https://api.telegram.org/bot{TELEGRAM_API_KEY}/sendMessage?chat_id={TELEGRAM_CHAT_ID}&text={template}')
+    session.get(f'https://api.telegram.org/bot{TELEGRAM_API_KEY}/sendMessage?chat_id={TELEGRAM_CHAT_ID}&text={template}')
