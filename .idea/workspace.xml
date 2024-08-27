@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8cf15db-5a74-49b3-a0e5-1b2bc9d3acfa" name="Changes" comment="Added future functionality to readme (custom templates/subjects for job_template_sender)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/incoming_pay_estimator/incoming_pay_estimator.py" beforeDir="false" afterPath="$PROJECT_DIR$/incoming_pay_estimator/incoming_pay_estimator.py" afterDir="false" />
+    <list default="true" id="c8cf15db-5a74-49b3-a0e5-1b2bc9d3acfa" name="Changes" comment="Finished implementing incoming_pay_estimator including grabbing calendar events via calendar api, integrating students database, and grabbing unknown student rates from wyzant via previously implemented wyzant_login function">
       <change beforePath="$PROJECT_DIR$/job_template_sender/job_template_sender.py" beforeDir="false" afterPath="$PROJECT_DIR$/job_template_sender/job_template_sender.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wyzant/wyzant_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/wyzant/wyzant_login.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +169,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724253845680</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Finished implementing incoming_pay_estimator including grabbing calendar events via calendar api, integrating students database, and grabbing unknown student rates from wyzant via previously implemented wyzant_login function">
+      <option name="closed" value="true" />
+      <created>1724561191183</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1724561191183</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -189,6 +194,7 @@
     <MESSAGE value="Added Wyzant login via requests" />
     <MESSAGE value="Tied job_template_sender to wyzant_login. Job_template_sender is functional now&#10;&#10;Upcoming: clean up file structure" />
     <MESSAGE value="Added future functionality to readme (custom templates/subjects for job_template_sender)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added future functionality to readme (custom templates/subjects for job_template_sender)" />
+    <MESSAGE value="Finished implementing incoming_pay_estimator including grabbing calendar events via calendar api, integrating students database, and grabbing unknown student rates from wyzant via previously implemented wyzant_login function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished implementing incoming_pay_estimator including grabbing calendar events via calendar api, integrating students database, and grabbing unknown student rates from wyzant via previously implemented wyzant_login function" />
   </component>
 </project>

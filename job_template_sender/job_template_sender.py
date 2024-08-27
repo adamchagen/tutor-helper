@@ -12,6 +12,7 @@ def get_template(subject: str, name: str, start: str, son_daughter_myself: str):
     match = re.search(pattern, start)
 
     #create datetime of student's desired start
+    """
     if match:
         weekday_name, month_name, day, year, time_str, timezone = match.groups()
 
@@ -21,6 +22,7 @@ def get_template(subject: str, name: str, start: str, son_daughter_myself: str):
         date_obj = datetime.strptime(date_str, '%B %d, %Y')
         time_obj = datetime.strptime(time_str, '%I:%M %p').time()
         full_datetime = datetime.combine(date_obj, time_obj)
+    """
 
     #First part depends on whom the tutoring is for
     part1 = (f"Hi {name}, I'd be happy to help you with your {subject}. " if son_daughter_myself == 'myself' else
@@ -55,7 +57,7 @@ for job in soup.find_all('div', class_='row spc-small-ew spc-med-ew'):
     reverse_index = description[::-1].find('Suggested'[::-1])
     index = len(description) - reverse_index - len('Suggested')
     start = description[index:]
-    print(start)
+    #print(start)
 
 
     son_daughter_myself = 'myself'

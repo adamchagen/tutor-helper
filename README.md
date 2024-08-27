@@ -6,10 +6,6 @@ get_template checks if suggested start time is available and requests to confirm
 
 Custom subjects/templates
 
-Pull schedule from Google Calendar
-Estimate upcoming income
-Not sure if user sets income level for each student or if it can be pulled from students page
-
 Student notes
 
 Availability supplier
