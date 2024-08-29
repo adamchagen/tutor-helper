@@ -12,3 +12,5 @@ job_template_sender/templates/jobs_files
 .idea/workspace.xml
 /wyzant/robots.txt
 .idea 
+__pycache__/
+*.pyc
