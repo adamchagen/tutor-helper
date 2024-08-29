@@ -3,13 +3,12 @@ import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-from dotenv import load_dotenv
 
-load_dotenv()
 
-CREDENTIALS_FILE = os.getenv('CREDENTIALS_FILE')
-SCOPES = os.getenv('SCOPES').split(',')
 def get_calendar_service():
+    CREDENTIALS_FILE = os.getenv('CREDENTIALS_FILE')
+    SCOPES = os.getenv('SCOPES').split(',')
+
     creds = None
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first

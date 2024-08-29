@@ -1,12 +1,8 @@
 import requests
-from dotenv import load_dotenv
 import os
 from bs4 import BeautifulSoup
-import time
 
-load_dotenv()
-
-def wyzant_login():
+def get_wyzant_session():
     # URL for the login page
     login_url = 'https://www.wyzant.com/login'
 
@@ -63,7 +59,3 @@ def wyzant_login():
         raise RuntimeError("Login unsuccessful")
 
     return session
-
-
-if __name__ == '__main__':
-    wyzant_login()

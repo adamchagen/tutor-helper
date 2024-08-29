@@ -16,6 +16,7 @@ wyzant_session = get_wyzant_session()
 
 app = Flask(__name__)
 
+send_job_templates(wyzant_session)
 
 # Function to run every 10 minutes
 def scheduled_job():
@@ -36,7 +37,6 @@ scheduler.add_job(
 
 # Shut down the scheduler when exiting the app
 atexit.register(lambda: scheduler.shutdown())
-
 
 @app.route('/estimate', methods=['GET'])
 def estimate():

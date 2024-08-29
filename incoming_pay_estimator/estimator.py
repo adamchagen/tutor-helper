@@ -1,11 +1,9 @@
 from datetime import datetime, timedelta
-from google_workspace import auth
-from dotenv import load_dotenv
 import os
 from dateutil import parser
 from bs4 import BeautifulSoup
 import psycopg2
-from wyzant.wyzant_login import wyzant_login
+from wyzant.session_manager import get_wyzant_session
 
 """
 To be used later: code for getting all calendar ids
@@ -16,14 +14,14 @@ calendars = service.calendarList().list().execute()
         print(f"Calendar Name: {calendar['summary']}, Calendar ID: {calendar['id']}")
 """
 
-load_dotenv()
+print("here1")
 
-def incoming_pay_estimator(service):
+def estimate_pay(google_service, wyzant_session):
+
+    print("here2")
     def write_student_rates_to_csv():
         print("Accessing Wyzant rates page")
-        session = wyzant_login()
-
-        jobs_content = session.get('https://www.wyzant.com/tutor/students').text
+        jobs_content = wyzant_session.get('https://www.wyzant.com/tutor/students').text
 
         soup = BeautifulSoup(jobs_content, 'lxml')
 
@@ -63,7 +61,7 @@ def incoming_pay_estimator(service):
                 cur.execute("""
                         UPDATE students
                         SET updated_at = CURRENT_TIMESTAMP,
-                        SET payrate = %s
+                            payrate = %s
                         WHERE name = %s;
                         """, (payrate, name))
 
@@ -90,7 +88,7 @@ def incoming_pay_estimator(service):
 
     end = beginning + timedelta(days=7)
 
-    events_result = service.events().list(
+    events_result = google_service.events().list(
         calendarId=CALENDAR_ID, timeMin=beginning.isoformat() + 'Z',
         maxResults=1000, timeMax=end.isoformat() + 'Z', singleEvents=True,
         orderBy='startTime').execute()
@@ -159,7 +157,3 @@ def incoming_pay_estimator(service):
             pay += duration * float(cur.fetchone()[0]) * .75
 
     print(f"Pay: ${pay}")
-
-if __name__ =='__main__':
-    service = auth.get_calendar_service()
-    incoming_pay_estimator(service)
