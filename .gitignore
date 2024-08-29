@@ -11,3 +11,4 @@ job_template_sender/templates/jobs_files
 /wyzant/templates/
 .idea/workspace.xml
 /wyzant/robots.txt
+.idea 

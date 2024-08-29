@@ -46,9 +46,8 @@ def get_wyzant_session():
     login_response = session.post(post_login_url, data=payload, headers=headers)
     login_response.raise_for_status()  # Check if the login request was successful
 
-    jobs_page=session.get('https://www.wyzant.com/tutor/jobs')
-
-    # Check if login was successful
+    # Check if login was successful, /tutor/jobs is locked behind login
+    jobs_page = session.get('https://www.wyzant.com/tutor/jobs')
     response_soup = BeautifulSoup(jobs_page.text, 'html.parser')
     page_title = response_soup.title.string
 

@@ -10,13 +10,11 @@ def get_calendar_service():
     SCOPES = os.getenv('SCOPES').split(',')
 
     creds = None
-    # The file token.pickle stores the user's access and refresh tokens, and is
-    # created automatically when the authorization flow completes for the first
-    # time.
+    # The file token.pickle stores the user's access and refresh tokens
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
-    # If there are no (valid) credentials available, let the user log in
+    # If there are no valid credentials, user logs in
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())

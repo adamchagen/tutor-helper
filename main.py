@@ -3,9 +3,11 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
 import atexit
 from dotenv import load_dotenv
+from flask import jsonify
+
+# Defined in this project
 from job_template_sender.sender import send_job_templates
 from incoming_pay_estimator.estimator import estimate_pay
-from flask import jsonify
 from wyzant.session_manager import get_wyzant_session
 from google_workspace.authorizer import get_calendar_service
 
@@ -16,6 +18,7 @@ wyzant_session = get_wyzant_session()
 
 app = Flask(__name__)
 
+# Send job templates once before sending only every ten minutes
 send_job_templates(wyzant_session)
 
 # Function to run every 10 minutes
@@ -38,6 +41,9 @@ scheduler.add_job(
 # Shut down the scheduler when exiting the app
 atexit.register(lambda: scheduler.shutdown())
 
+# Endpoint for triggering function to estimate upcoming pay according to Google Calendar, student rates from Wyzant
+# Currently only prints result in log; could send result via telegram as job_template_sender does
+# or be delivered to user another way
 @app.route('/estimate', methods=['GET'])
 def estimate():
     estimate_pay(google_service, wyzant_session)
