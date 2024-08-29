@@ -1,0 +1,13 @@
+.venv/
+.env
+job_template_sender/templates/jobs.html
+job_template_sender/templates/jobs_files
+/google_workspace/credentials.json
+/incoming_pay_estimator/templates/student_rates.html
+/incoming_pay_estimator/templates/student_rates_files
+/token.pickle
+/incoming_pay_estimator/templates/
+/job_template_sender/templates/
+/wyzant/templates/
+.idea/workspace.xml
+/wyzant/robots.txt
