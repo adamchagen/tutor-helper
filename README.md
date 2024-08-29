@@ -1,13 +1,10 @@
-Upcoming functionality:
+**Suite of tools for tutors based on my own personal needs in tutoring**
 
-Pull schedule from Google Calendar
-User sets working hours
-get_template checks if suggested start time is available and requests to confirm it if it is
+**Incoming Pay Estimator**
 
-Custom subjects/templates
+Estimates incoming tutoring pay based on events in Google Calendar
+Completes Google OAuth 2.0 flow and pulls upcoming calendar events; matches students listed in events to postgresql db containing student payrates (scrapes from Wyzant to populate db)
 
-Student notes
+**Template Sender**
 
-Availability supplier
-
-Put on cloud service
+Intermittently checks for students seeking jobs on Wyzant and suggest templates to tutor for messaging said clients based on client job posting content
