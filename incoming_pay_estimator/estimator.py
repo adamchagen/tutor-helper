@@ -161,7 +161,10 @@ def estimate_pay(google_service, wyzant_session):
 
             # update/add all student payrates if student is absent or last updated ~2+ months ago
             if not result or result[1] < (datetime.now() - timedelta(days=60)):
-                print(result) if result else "f{name} not in database"
+                if result:
+                    print(result)
+                else:
+                    print(f"{name} not in database")
                 if not results_updated:
                     write_student_rates_to_db()
                     results_updated = True
@@ -169,7 +172,8 @@ def estimate_pay(google_service, wyzant_session):
                 # This runs if 1. we have already written students from Wyzant to db and 2. student
                 # is still not in the db (i.e., student wasn't found on Wyzant rates page
                 else:
-                    print(f"{name} not in database")
+                    print(f"Already wrote student rates to database and {name} still not in database, continuing")
+                    continue
 
             # Track total_time in upcoming sessions, not currently used but could be of interest to user
             total_time += duration
@@ -182,7 +186,13 @@ def estimate_pay(google_service, wyzant_session):
                     WHERE name = %s;
             """, (name,))
 
+            result = cur.fetchone()
+
+            if not result:
+                print(f"Already wrote student rates to database and {name} still not in database, continuing")
+                continue
+
             # Tutor only sees 75% of total student payrate
-            pay += duration * float(cur.fetchone()[0]) * .75
+            pay += duration * float(result[0]) * .75
 
     print(f"Pay: ${pay}")
