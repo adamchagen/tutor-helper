@@ -2,7 +2,6 @@ from flask import Flask
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
 import atexit
-from dotenv import load_dotenv
 from flask import jsonify
 
 # Defined in this project
@@ -10,8 +9,6 @@ from job_template_sender.sender import send_job_templates
 from incoming_pay_estimator.estimator import estimate_pay
 from wyzant.session_manager import get_wyzant_session
 from google_workspace.authorizer import get_calendar_service
-
-load_dotenv()
 
 google_service = get_calendar_service()
 wyzant_session = get_wyzant_session()

@@ -1,9 +1,8 @@
 from datetime import datetime, timedelta
-import os
+from google_cloud_secret_manager import access_secret
 from dateutil import parser
 from bs4 import BeautifulSoup
-import psycopg2
-
+from database_connector import connect_with_connector
 """
 To be used later: code for getting all calendar ids
 Requires full google calendar scope ('https://www.googleapis.com/auth/calendar')
@@ -82,16 +81,11 @@ def estimate_pay(google_service, wyzant_session):
         # Commit after all students from page updated
         conn.commit()
 
-    conn = psycopg2.connect(
-        dbname=os.getenv('DB_NAME'),
-        user=os.getenv('DB_USER'),
-        password=os.getenv('DB_PASSWORD'),
-        host=os.getenv('DB_HOST')
-    )
+    conn = connect_with_connector()
 
     cur = conn.cursor()
 
-    CALENDAR_ID = os.getenv('CALENDAR_ID')
+    CALENDAR_ID = access_secret('CALENDAR_ID')
 
     # Only get tutoring events for next week
     beginning = datetime.now()
