@@ -1,5 +1,5 @@
 import requests
-import os
+from google_cloud_secret_manager import access_secret
 from bs4 import BeautifulSoup
 
 def get_wyzant_session():
@@ -26,8 +26,8 @@ def get_wyzant_session():
     else:
         print("CSRF token found:", request_verification_token)
 
-    USERNAME = os.getenv('WYZANT_USER')
-    PASSWORD = os.getenv('WYZANT_PASSWORD')
+    USERNAME = access_secret('WYZANT_USER')
+    PASSWORD = access_secret('WYZANT_PASSWORD')
 
     # Prepare the login payload
     payload = {

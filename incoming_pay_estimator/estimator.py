@@ -1,9 +1,8 @@
 from datetime import datetime, timedelta
-import os
+from google_cloud_secret_manager import access_secret
 from dateutil import parser
 from bs4 import BeautifulSoup
-import psycopg2
-
+from database_connector import connect_with_connector
 """
 To be used later: code for getting all calendar ids
 Requires full google calendar scope ('https://www.googleapis.com/auth/calendar')
@@ -82,16 +81,11 @@ def estimate_pay(google_service, wyzant_session):
         # Commit after all students from page updated
         conn.commit()
 
-    conn = psycopg2.connect(
-        dbname=os.getenv('DB_NAME'),
-        user=os.getenv('DB_USER'),
-        password=os.getenv('DB_PASSWORD'),
-        host=os.getenv('DB_HOST')
-    )
+    conn = connect_with_connector()
 
     cur = conn.cursor()
 
-    CALENDAR_ID = os.getenv('CALENDAR_ID')
+    CALENDAR_ID = access_secret('CALENDAR_ID')
 
     # Only get tutoring events for next week
     beginning = datetime.now()
@@ -161,7 +155,10 @@ def estimate_pay(google_service, wyzant_session):
 
             # update/add all student payrates if student is absent or last updated ~2+ months ago
             if not result or result[1] < (datetime.now() - timedelta(days=60)):
-                print(result) if result else "f{name} not in database"
+                if result:
+                    print(result)
+                else:
+                    print(f"{name} not in database")
                 if not results_updated:
                     write_student_rates_to_db()
                     results_updated = True
@@ -169,7 +166,8 @@ def estimate_pay(google_service, wyzant_session):
                 # This runs if 1. we have already written students from Wyzant to db and 2. student
                 # is still not in the db (i.e., student wasn't found on Wyzant rates page
                 else:
-                    print(f"{name} not in database")
+                    print(f"Already wrote student rates to database and {name} still not in database, continuing")
+                    continue
 
             # Track total_time in upcoming sessions, not currently used but could be of interest to user
             total_time += duration
@@ -182,7 +180,13 @@ def estimate_pay(google_service, wyzant_session):
                     WHERE name = %s;
             """, (name,))
 
+            result = cur.fetchone()
+
+            if not result:
+                print(f"Already wrote student rates to database and {name} still not in database, continuing")
+                continue
+
             # Tutor only sees 75% of total student payrate
-            pay += duration * float(cur.fetchone()[0]) * .75
+            pay += duration * float(result[0]) * .75
 
     print(f"Pay: ${pay}")

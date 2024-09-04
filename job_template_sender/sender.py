@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
-import os
 import re
+from google_cloud_secret_manager import access_secret
 
 
 # Triggered every 10 minutes in main.py
@@ -30,8 +30,8 @@ def send_job_templates(wyzant_session):
                 f"Hi {name}, I'd be happy to work with your son. ")
 
         #Second part depends on what the subject is, could create db or other method of storing these in future
-        MCAT_MESSAGE = os.getenv('MCAT_MESSAGE')
-        CHEMISTRY_MESSAGE = os.getenv('CHEMISTRY_MESSAGE')
+        MCAT_MESSAGE = access_secret('MCAT_MESSAGE')
+        CHEMISTRY_MESSAGE = access_secret('CHEMISTRY_MESSAGE')
 
         part2 = MCAT_MESSAGE if subject == 'MCAT' else CHEMISTRY_MESSAGE
 
@@ -75,7 +75,7 @@ def send_job_templates(wyzant_session):
         print(template)
         print("")
 
-        TELEGRAM_API_KEY = os.getenv('TELEGRAM_API_KEY')
-        TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
+        TELEGRAM_API_KEY = access_secret('TELEGRAM_API_KEY')
+        TELEGRAM_CHAT_ID = access_secret('TELEGRAM_CHAT_ID')
 
         wyzant_session.get(f'https://api.telegram.org/bot{TELEGRAM_API_KEY}/sendMessage?chat_id={TELEGRAM_CHAT_ID}&text={template}')

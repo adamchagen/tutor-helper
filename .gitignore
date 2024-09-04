@@ -14,3 +14,4 @@ job_template_sender/templates/jobs_files
 .idea 
 __pycache__/
 *.pyc
+/service_account_credentials.json

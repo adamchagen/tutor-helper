@@ -1,7 +1,6 @@
 # Ignore environment files and credentials
 .env
 google_workspace/credentials.json
-token.pickle
 
 # Ignore Git files and folders
 .git

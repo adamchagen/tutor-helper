@@ -1,13 +1,14 @@
 import pickle
-import os.path
+from google_cloud_secret_manager import access_secret
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
-
+import json
+import os
 
 def get_calendar_service():
-    CREDENTIALS_FILE = os.getenv('CREDENTIALS_FILE')
-    SCOPES = os.getenv('SCOPES').split(',')
+    CREDENTIALS_JSON = access_secret('CREDENTIALS_JSON')  # Load credentials from environment variable
+    SCOPES = access_secret('SCOPES').split(',')
 
     creds = None
     # The file token.pickle stores the user's access and refresh tokens
@@ -19,9 +20,10 @@ def get_calendar_service():
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                CREDENTIALS_FILE, SCOPES)
-            creds = flow.run_local_server(port=0)
+            # Use credentials from the JSON string
+            flow = InstalledAppFlow.from_client_config(
+                json.loads(CREDENTIALS_JSON), SCOPES)
+            creds = flow.run_console()
 
         # Save the credentials for the next run
         with open('token.pickle', 'wb') as token:
